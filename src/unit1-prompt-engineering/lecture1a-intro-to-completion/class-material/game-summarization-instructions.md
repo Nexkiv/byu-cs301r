@@ -1,1 +1,0 @@
-Read the game report, identify the two teams that played in the game and identify who won.

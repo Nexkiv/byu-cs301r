@@ -1,1 +1,0 @@
-Generate python code that will print the first 5 prime numbers.
