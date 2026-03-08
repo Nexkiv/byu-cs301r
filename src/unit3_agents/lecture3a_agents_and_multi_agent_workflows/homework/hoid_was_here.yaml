@@ -1,0 +1,144 @@
+agents:
+  - name: historian
+    description: User-facing conversational agent that asks questions and presents final Hoid placement
+    model: gpt-5-mini
+    prompt: |
+      You are a lore master.
+      When instructed to ask the user a question, return ONLY the question text.
+      Keep it concise and friendly.
+      You are able to tell stories with the flair of someone who has spent years studying stories.
+      Format your sentences like an english major who plays D&D who is being charged by the letter.
+      If your response would include words surrounded by parenthesis or dashes just remove those sections to reduce on word use.
+    tools: [ ]
+
+  - name: clarity_checker
+    description: Evaluates if the story description is clear or needs clarification
+    model: gpt-5-mini
+    prompt: |
+      You are a lore master's assistant.
+      You will receive a JSON object with a story description.
+      You only care about getting the story name identification information
+      correct, do not case about reasoning.
+      Ask up to 5 clarifying questions using the JSON schema. 
+      If none are needed, return an empty list.
+    tools: [ ]
+    kwargs:
+      text:
+        format:
+          type: json_schema
+          name: clarity_assessment
+          schema:
+            type: object
+            additionalProperties: false
+            required: [ "story_summary", "is_clear", "clarifying_questions" ]
+            properties:
+              story_summary:
+                type: string
+              is_clear:
+                type: boolean
+              clarifying_questions:
+                type: array
+                items:
+                  type: string
+
+  - name: research_planner
+    description: Plans web search tasks to gather story details and context
+    model: gpt-5-mini
+    prompt: |
+      You will receive a JSON object with the topic and clarifications.
+      Create 3-6 web search tasks to find:
+        - Plot details and major events
+        - Character names and roles (especially minor/unnamed characters)
+        - Setting and world-building details
+        - Naming conventions and cultural details
+      Return ONLY valid JSON matching the provided schema.
+    tools: [ ]
+    kwargs:
+      text:
+        format:
+          type: json_schema
+          name: research_plan
+          schema:
+            type: object
+            additionalProperties: false
+            required: [ "search_tasks" ]
+            properties:
+              search_tasks:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: false
+                  required: [ "query", "purpose" ]
+                  properties:
+                    query:
+                      type: string
+                    purpose:
+                      type: string
+
+  - name: researcher
+    description: Executes web search tasks and summarizes findings
+    model: gpt-5-mini
+    prompt: |
+      You will receive a JSON object with a search task.
+      Use the web_search tool to gather information about a story.
+      Summarize findings relevant to placing Hoid in the story.
+      Extract 6-10 key points about characters, locations, events, or naming patterns
+      Include a basic outline of the plot as well.
+      Double check your results and confirm that the json structure you return is valid json.
+      Return ONLY valid JSON matching the provided schema.
+    tools: [ "web_search" ]
+    kwargs:
+      text:
+        format:
+          type: json_schema
+          name: research_summary
+          schema:
+            type: object
+            additionalProperties: false
+            required: [ "query", "summary", "key_points" ]
+            properties:
+              query:
+                type: string
+              summary:
+                type: string
+              key_points:
+                type: array
+                items:
+                  type: string
+
+  - name: hoid_disguiser
+    description: Places Hoid in the story using research summaries and Hoid facts
+    model: gpt-5-mini
+    prompt: |
+      You are a master detective.
+      Using the provided information find the most likely place for Hoid to be found in the story. 
+      When finding where Hoid is in the story look for these key things:
+       - Plausible placement (minor/unamed characters, gaps in story, unexplained occurrences)
+       - Use Hoid facts to ensure canonical behavior (storyteller, beggar, wit, etc.)
+       - Based on these characteristics point out who and where Hoid is in the story.
+      **IMPORTANT** Hoid is in every story provided and you can find him. 
+      Do not add details that are not in the source material beyond small basic elements.
+      Return ONLY valid JSON matching the provided schema.
+    tools: [ ]
+    kwargs:
+      text:
+        format:
+          type: json_schema
+          name: hoid_placement
+          schema:
+            type: object
+            additionalProperties: false
+            required: [ "character_name", "appearance", "scene_location", "in_world_role", "secret_purpose", "props_or_details" ]
+            properties:
+              character_name:
+                type: string
+              appearance:
+                type: string
+              scene_location:
+                type: string
+              in_world_role:
+                type: string
+              secret_purpose:
+                type: string
+              props_or_details:
+                type: string
