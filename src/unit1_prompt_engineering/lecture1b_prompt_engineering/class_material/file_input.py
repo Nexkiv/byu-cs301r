@@ -5,15 +5,14 @@ from time import time
 
 from openai import OpenAI
 
-# Add class_material directory to Python path for imports
-class_material_dir = Path(__file__).parent.parent / "class_material"
-sys.path.insert(0, str(class_material_dir))
-
 from usage import print_usage
 
 
-def main(model: str, prompt: str):
+def main(model: str, prompt: str, text: str):
     client = OpenAI()
+    prompt += text
+
+
     start = time()
     response = client.responses.create(
         model=model,
@@ -22,7 +21,7 @@ def main(model: str, prompt: str):
     )
     print(response.output_text)
 
-    print(f'{round(time() - start, 2)} seconds elapsed', file=sys.stderr)
+    print(f'{round(time()-start, 2)} seconds elapsed', file=sys.stderr)
     print_usage(model, response.usage)
 
 
@@ -30,6 +29,7 @@ def main(model: str, prompt: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser('AI Response')
     parser.add_argument('prompt_file', type=Path)
+    parser.add_argument('input_file', type=Path)
     parser.add_argument('--model', default='gpt-5-nano')
     args = parser.parse_args()
-    main(args.model, args.prompt_file.read_text())
+    main(args.model, args.prompt_file.read_text(), args.input_file.read_text())
