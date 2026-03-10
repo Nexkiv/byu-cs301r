@@ -1,0 +1,22 @@
+model: gpt-5-nano
+kwargs:
+  reasoning:
+    effort: low
+  text:
+    format:
+      type: json_schema
+      name: response
+      schema:
+        type: object
+        additionalProperties: false
+        required: [ "grouping" ]
+        properties:
+          grouping:
+            type: object
+            additionalProperties: false
+            required: [ "Disney", "Pixar" ]
+            properties:
+              Disney:
+                type: string
+              Pixar:
+                type: string

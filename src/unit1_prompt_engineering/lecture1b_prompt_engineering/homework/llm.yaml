@@ -1,0 +1,22 @@
+model: gpt-5-nano
+kwargs:
+  reasoning:
+    effort: low
+  text:
+    format:
+      type: json_schema
+      name: response
+      schema:
+        type: object
+        additionalProperties: false
+        required: [ "llm_response" ]
+        properties:
+          llm_response:
+            type: object
+            additionalProperties: false
+            required: [ "Tropical-Subtropical", "Temperate" ]
+            properties:
+              Tropical-Subtropical:
+                type: string
+              Temperate:
+                type: string

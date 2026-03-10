@@ -1,0 +1,17 @@
+model: gpt-5-nano
+kwargs:
+  reasoning:
+    effort: low
+  text:
+    format:
+      type: json_schema
+      name: response
+      schema:
+        type: object
+        additionalProperties: false
+        required: [ "code", "summary" ]
+        properties:
+          code:
+            type: string
+          summary:
+            type: string
