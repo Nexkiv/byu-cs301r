@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equations — Web Player</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <header class="app-header">
+    <div class="title-block">
+      <div class="eyebrow">Academic Games League of America</div>
+      <h1>Equations — Tournament Practice</h1>
+      <p class="subtitle">Hot-seat play for 2–3 players. Goal + Required/Permitted/Forbidden are drag-and-drop. Final solutions are typed.</p>
+    </div>
+    <div class="meta-block">
+      <div class="meta">
+        <span class="label">Status</span>
+        <span id="phaseLabel" class="value">Not started</span>
+      </div>
+      <div class="meta">
+        <span class="label">Goal Setter</span>
+        <span id="goalSetterLabel" class="value">—</span>
+      </div>
+      <div class="meta">
+        <span class="label">Current Turn</span>
+        <span id="turnLabel" class="value">—</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel control-panel">
+      <h2>Match Controls</h2>
+      <div class="control-row">
+        <label for="playerCount">Players</label>
+        <select id="playerCount">
+          <option value="2">2 Players</option>
+          <option value="3">3 Players</option>
+        </select>
+      </div>
+      <div id="playerNames" class="control-row"></div>
+      <div class="buttons">
+        <button id="startMatchBtn" class="primary">Start Match</button>
+        <button id="newShakeBtn">New Shake</button>
+        <button id="lockGoalBtn">Lock Goal</button>
+        <button id="endTurnBtn">End Turn</button>
+      </div>
+      <div class="buttons">
+        <button id="challengeNowBtn" class="warn">Challenge: Now</button>
+        <button id="challengeNeverBtn" class="warn">Challenge: Never</button>
+      </div>
+      <div class="buttons">
+        <button id="resolveChallengeBtn">Resolve Challenge</button>
+        <button id="nextRoundBtn">Next Round</button>
+      </div>
+      <div class="note">
+        <strong>Reminder:</strong> Final solutions are typed. Goal + Required/Permitted/Forbidden are drag-and-drop.
+      </div>
+    </section>
+
+    <section class="panel score-panel">
+      <h2>Players</h2>
+      <div id="playersList" class="players"></div>
+    </section>
+
+    <section class="panel mat-panel">
+      <h2>Playing Mat</h2>
+      <div class="mat">
+        <div class="mat-section">
+          <div class="section-header">Goal (drag 1–6 cubes)</div>
+          <div id="goalZone" class="zone goal-zone" data-zone="goal"></div>
+        </div>
+        <div class="mat-row">
+          <div class="mat-section">
+            <div class="section-header">Required</div>
+            <div id="requiredZone" class="zone" data-zone="required"></div>
+          </div>
+          <div class="mat-section">
+            <div class="section-header">Permitted</div>
+            <div id="permittedZone" class="zone" data-zone="permitted"></div>
+          </div>
+          <div class="mat-section">
+            <div class="section-header">Forbidden</div>
+            <div id="forbiddenZone" class="zone" data-zone="forbidden"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel resources-panel">
+      <h2>Resources</h2>
+      <div id="resourcesZone" class="zone resources-zone" data-zone="resources"></div>
+    </section>
+
+    <section class="panel submission-panel">
+      <h2>Challenge & Solutions</h2>
+      <div class="challenge-info" id="challengeInfo">No active challenge.</div>
+      <div class="submission-grid">
+        <div class="submission-card">
+          <div class="submission-title">Challenger</div>
+          <input id="challengerInput" type="text" placeholder="e.g., 3x(5+2)" />
+        </div>
+        <div class="submission-card">
+          <div class="submission-title">Mover</div>
+          <input id="moverInput" type="text" placeholder="optional" />
+        </div>
+        <div class="submission-card">
+          <div class="submission-title">Third Party</div>
+          <input id="thirdInput" type="text" placeholder="optional" />
+        </div>
+      </div>
+      <div class="submit-row">
+        <button id="submitSolutionsBtn" class="primary">Submit Solutions</button>
+        <div id="validationMsg" class="validation"></div>
+      </div>
+    </section>
+
+    <section class="panel history-panel">
+      <h2>History</h2>
+      <div id="historyLog" class="history"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
