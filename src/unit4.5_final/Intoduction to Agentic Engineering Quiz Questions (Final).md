@@ -136,3 +136,49 @@ def talk_to_user(message: str):
       changes are being made. Once I have a completed web-app, I would play around with it. If I wanted to make further
       changes I would switch back to plan mode and iterate on this process until I have the web-app working the way I
       want it to.
+
+## Section 3e: Harness Engineering
+
+* What is an agent skill? How is it defined? How is it used?
+    * An agent skill is a portable, reusable package of domain knowledge and procedural instructions that teaches an
+      agent how to accomplish a specific workflow. Skills are defined with meta-data (front-matter) and context. The
+      front-matter contains a name and description. They are used by the main instance of the model to identify the
+      skill and when it should be used. The skill context includes what the skill does when it is included. They usually
+      contain step-by-step instructions, output format requirements, relevant logic, or preferences on what resources to
+      use. Skills are used by giving the model access to the list of skills usually by using an AGENTS.md. The agent
+      then calls load_skill to pull skills based on their front-matter for specific circumstances. Skills are distinct
+      from tools in that tools are capabilities while skills are instructions. Skills are also distinct from MCP in that
+      MCP gives agents access to external tools and data while skills give the agent information on how to use those
+      tools.
+* Describe harness engineering. What is it? What goal does it seek to achieve?
+    * Harness engineering is the process of building a system of skills that agents can pull from. The harness entry
+      point is the AGENTS.md file where it describes the skill architecture to the agent. A harness can be thought of as
+      the infrastructure of the repository, similar to an environment. This is because an environment provides runtime
+      dependencies while harnesses provide behavioral/knowledge dependencies. Harness engineering allows a user to
+      selectively load the relevant context using the skills that they make available to their agents. Harness
+      engineering solves the context bloating problem by offloading the context of specific know-how into skills that
+      will be accessed by the model when they are needed.
+* What is progressive disclosure? Why is it important?
+    * Progressive disclosure is an interaction design pattern that is built upon the concept that information should
+      only be revealed when it is relevant, not all at once. In an agentic sense, progressive disclosure is the process
+      that gives an agent control over when and what context is loaded. Progressive disclosure involves agents that have
+      access to the specific skills that outline the know-how for tasks. When an agent accesses a skill, it allows it to
+      access that context progressively. This solves the problem of context bloating where an agent's context would get
+      filled with irrelevant context that could distract or confuse the agent. By making the context something that is
+      added only when it is needed it makes it so the agents can stay on track easier. Progressive disclosure has three
+      parts: (1) the skill index with only the names and descriptions from AGENTS.md, (2) the full skill context loaded
+      from the skill file, (3) deep supporting materials that are accessed only when they are needed. The biggest
+      drawback of progressive disclosure is that it increases the latency of the agent. This happens because the model
+      has to make an inference to match the task to a skill and then invoke `load_skill` before proceeding.
+* Describe the principle of agent legibility. Why is it important? What does it aim to accomplish?
+    * Agent legibility is the concept that the actions taken by an agent should be able to be seen and parsed by a human
+      user. This includes both what the agent does and why it does it. Some ways that this principle is applied is in
+      the use of structured logging, chain-of-though-output, step-by-step updates, or audit trails. This principle makes
+      it possible for users to better understand what is happening and when to shift the process being performed by the
+      agent to avoid context drift and agentic misalignment. Another advantage of agent legibility is that it makes the
+      process of debugging the agents actions clearer to the user. When the agent fails at a task, if it was performed
+      legibly, then the user would be able to trace the process to find where the error occurred. Another advantage is
+      that it allos for trust and auditability which is essential in high-stakes workflows. Agent legibility is used to
+      make human-in-the-loop more effective by keeping the actions performed by the agent clear to the user. The goal of
+      agent legibility is to make human oversight of a system possible in a way that enables the effective application
+      of human judgment.

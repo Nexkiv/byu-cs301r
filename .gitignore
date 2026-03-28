@@ -1,3 +1,9 @@
 .env
 
 src/shared/text
+
+# Removing homework zips
+**/*.zip
+**/.gradio
+
+**/.venv
