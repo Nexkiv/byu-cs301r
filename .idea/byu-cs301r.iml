@@ -7,6 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/src/shared/text" />
       <excludeFolder url="file://$MODULE_DIR$/src/unit1_prompt_engineering/lecture1d_jailbreaking/homework/.gradio" />
+      <excludeFolder url="file://$MODULE_DIR$/src/unit2_agent_tools/lecture2b_rag_solutions/homework/my_chroma_db" />
       <excludeFolder url="file://$MODULE_DIR$/src/unit3_agents/lecture3e_harness_engineering/class_material/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/src/unit3_agents/lecture3e_harness_engineering/homework/.venv" />
     </content>

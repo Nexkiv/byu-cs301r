@@ -5,6 +5,8 @@ from functools import wraps
 from pathlib import Path
 from typing import Iterable, Any
 
+import os
+
 import chromadb
 from chromadb.utils.embedding_functions import OpenAIEmbeddingFunction
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -47,7 +49,7 @@ def ingest_folder(
     client = chromadb.PersistentClient(path=persist_dir)
 
     # OpenAI embeddings (uses OPENAI_API_KEY env var by default)
-    openai_ef = OpenAIEmbeddingFunction(model_name=openai_model)
+    openai_ef = OpenAIEmbeddingFunction(model_name=openai_model, api_key=os.environ["OPENAI_API_KEY"])
 
     collection = client.get_or_create_collection(
         name=chroma_collection_name,
@@ -124,9 +126,11 @@ def query_whole_documents(
         collection: str,
         query: str,
         n_results: int = 5,
+        openai_model: str = "text-embedding-3-small",
 ) -> list[str]:
     client = chromadb.PersistentClient(path=chroma_dir)
-    collection = client.get_collection(name=collection)
+    openai_ef = OpenAIEmbeddingFunction(model_name=openai_model, api_key=os.environ["OPENAI_API_KEY"])
+    collection = client.get_collection(name=collection, embedding_function=openai_ef)
 
     # 1) Find best matching chunk
     q = collection.query(

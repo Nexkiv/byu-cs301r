@@ -7,3 +7,4 @@ src/shared/text
 **/.gradio
 
 **/.venv
+**/my_chroma_db
