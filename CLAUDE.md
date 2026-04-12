@@ -48,7 +48,11 @@ src/
 │   ├── lecture3b_agents_as_tools/
 │   │   ├── class_material/      # Agents calling agents dynamically
 │   │   └── homework/            # Content censorship workflow
-│   └── lecture3c_class_project/ # Project planning (no code)
+│   ├── lecture3c_class_project_and_discussion/ # Project planning (no code)
+│   ├── lecture3d_codex_and_vibecoding/         # Codex and vibe coding
+│   ├── lecture3e_harness_engineering/
+│   │   └── homework/            # myteam OWASP Top 10 security audit team
+│   └── lecture3f_cookbook_and_advanced_structure/ # Advanced patterns
 │
 └── unit4.5_final/               # Final assessment questions
 ```
@@ -66,6 +70,7 @@ src/
   - `langchain` - Text splitting utilities (Unit 2)
   - `fire` - CLI generation (Unit 2)
   - `fastmcp` - MCP server framework (Unit 2f)
+  - `myteam` - Agent role/skill framework for harness engineering (Unit 3e)
 
 ## Running Code
 
@@ -162,6 +167,16 @@ python hoid_was_here.py  # Multi-agent storytelling
 cd src/unit3_agents/lecture3b_agents_as_tools/homework
 python censor.py         # Content censorship workflow
 ```
+
+**Harness Engineering with myteam (Lecture 3e):**
+```bash
+cd src/unit3_agents/lecture3e_harness_engineering/homework
+pip install myteam
+myteam get role            # Load coordinator role and begin audit workflow
+```
+The homework directory contains a `.myteam/` team configured as an OWASP Top 10
+security audit system. It is designed to be run with Codex: open Codex in the
+homework directory and it will read `AGENTS.md` to bootstrap the workflow.
 
 ## Architecture
 
@@ -352,6 +367,28 @@ result = await run_agent(main_agent_config, toolbox, usage)
 - **Lecture 3a**: Pre-orchestrated sequence (you control flow)
 - **Lecture 3b**: Dynamic delegation (agent controls flow)
 
+**myteam Harness Engineering (Lecture 3e):**
+
+`myteam` uses filesystem-based configuration to give agents roles, skills, and tools:
+
+```
+.myteam/
+  role.md              # Root role (coordinator instructions)
+  load.py              # Auto-generated loader
+  recon/
+    skill.md           # Skill loaded by coordinator
+  auditors/
+    skill.md           # Shared guidelines (context only, not an action)
+    injection/
+      skill.md         # Specialist skill
+```
+
+Agents bootstrap by running `myteam get role`, then load skills sequentially
+with `myteam get skill <name>`. Skills are hierarchical -- child skills are
+only discoverable after loading their parent. Each skill writes output to a
+specific file, enabling file-based handoff between skills without relying on
+conversation memory.
+
 ## Common Development Tasks
 
 ### Running Tests
@@ -480,6 +517,7 @@ print_usage(model, usage)
 - Custom agent framework (`run_agent.py`, `tools.py`)
 - JSON schema validation
 - Context variables
+- myteam (filesystem-based agent role/skill framework)
 
 ## Notable Files and Utilities
 
@@ -499,6 +537,7 @@ print_usage(model, usage)
 - `lecture3a/.../deep_research.py` - Research workflow (5 agents, sequential + parallel)
 - `lecture3a/.../hoid_was_here.py` - Storytelling workflow (5 agents with Hoid character)
 - `lecture3b/.../agents.py` - Agent-as-tool orchestration (dynamic delegation)
+- `lecture3e/.../homework/.myteam/` - OWASP Top 10 security audit team (14 skills, file-based handoff)
 
 ## Homework Pattern
 
