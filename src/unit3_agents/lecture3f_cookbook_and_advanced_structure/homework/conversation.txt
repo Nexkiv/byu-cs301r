@@ -1,0 +1,279 @@
+Graph Memory Chatbot
+Graph: 0 nodes, 0 edges loaded
+Type /help for available commands.
+
+run_agent. DEBU 17:53:59 AGENT main
+run_agent. DEBU 17:54:02 RESPONSE from main in 2.88 seconds
+tools.py   DEBU 17:54:02 TOOL talk_to_user({'message': 'Thanks — I see the graph is empty. What concept or topic would you like me to add first? You can give me a person, place, event, organization, idea, or era (e.g., "Ada Lovelace", "Renaissance", "photosynthesis", "World Health Organization").'})
+
+main: Thanks — I see the graph is empty. What concept or topic would you like me to add first? You can give me a person, place, event, organization, idea, or era (e.g., "Ada Lovelace", "Renaissance", "photosynthesis", "World Health Organization").
+
+User: I would like to discuss Disney movies, specifically Tangled and Frozen.
+tools.py   DEBU 17:54:38 TOOL talk_to_user({'message': 'Thanks — I see the graph is empty. What concept or topic would you like me to add first? You can give me a person, place, event, organization, idea, or era (e.g., "Ada Lovelace", "Renaissance", "photosynthesis", "World Health Organization").'}) -> I would like to discuss Disney movies, specifically Tangled and Frozen.
+run_agent. DEBU 17:54:38 AGENT main
+run_agent. DEBU 17:54:48 RESPONSE from main in 10.33 seconds
+tools.py   DEBU 17:54:48 TOOL search_nodes({'query': 'Tangled', 'limit': 10})
+tools.py   DEBU 17:54:48 TOOL search_nodes({'query': 'Tangled', 'limit': 10}) -> No nodes matching "Tangled".
+tools.py   DEBU 17:54:48 TOOL search_nodes({'query': 'Frozen', 'limit': 10})
+tools.py   DEBU 17:54:48 TOOL search_nodes({'query': 'Frozen', 'limit': 10}) -> No nodes matching "Frozen".
+run_agent. DEBU 17:54:48 AGENT main
+run_agent. DEBU 17:54:50 RESPONSE from main in 2.04 seconds
+tools.py   DEBU 17:54:50 TOOL add_node({'label': 'Tangled', 'node_type': 'event', 'description': 'Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with modern humor and visuals.'})
+tools.py   DEBU 17:54:50 TOOL add_node({'label': 'Tangled', 'node_type': 'event', 'description': 'Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with modern humor and visuals.'}) -> Created node "Tangled" (id=tangled, type=event).
+run_agent. DEBU 17:54:50 AGENT main
+run_agent. DEBU 17:54:54 RESPONSE from main in 3.47 seconds
+tools.py   DEBU 17:54:54 TOOL add_node({'label': 'Frozen', 'node_type': 'event', 'description': "Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and the hit song 'Let It Go'."})
+tools.py   DEBU 17:54:54 TOOL add_node({'label': 'Frozen', 'node_type': 'event', 'description': "Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and the hit song 'Let It Go'."}) -> Created node "Frozen" (id=frozen, type=event).
+run_agent. DEBU 17:54:54 AGENT main
+run_agent. DEBU 17:54:55 RESPONSE from main in 1.73 seconds
+tools.py   DEBU 17:54:55 TOOL search_nodes({'query': 'Rapunzel', 'limit': 20})
+tools.py   DEBU 17:54:55 TOOL search_nodes({'query': 'Rapunzel', 'limit': 20}) -> Search results for "Rapunzel":
+  - Tangled (id=tangled, type=event, mentions=1): Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with mo
+run_agent. DEBU 17:54:55 AGENT main
+run_agent. DEBU 17:54:57 RESPONSE from main in 1.42 seconds
+tools.py   DEBU 17:54:57 TOOL search_nodes({'query': 'Hans Christian Andersen', 'limit': 20})
+tools.py   DEBU 17:54:57 TOOL search_nodes({'query': 'Hans Christian Andersen', 'limit': 20}) -> Search results for "Hans Christian Andersen":
+  - Frozen (id=frozen, type=event, mentions=1): Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and t
+run_agent. DEBU 17:55:10 AGENT main
+run_agent. DEBU 17:55:13 RESPONSE from main in 2.76 seconds
+tools.py   DEBU 17:55:13 TOOL talk_to_user({'message': "Great — Tangled and Frozen are now added to my concept graph. How would you like to explore them? Options: 1) compare themes/characters/visual style, 2) trace their fairy-tale inspirations and adaptations, 3) deep dive into music and songs, 4) connections to Disney's animation history, or 5) something else you have in mind. Which would you like?"})
+
+main: Great — Tangled and Frozen are now added to my concept graph. How would you like to explore them? Options: 1) compare themes/characters/visual style, 2) trace their fairy-tale inspirations and adaptations, 3) deep dive into music and songs, 4) connections to Disney's animation history, or 5) something else you have in mind. Which would you like?
+
+User: I want to connect the kingdoms of corona and arendelle based on their political connections based on the people at Elsa's corenation.
+tools.py   DEBU 17:55:59 TOOL talk_to_user({'message': "Great — Tangled and Frozen are now added to my concept graph. How would you like to explore them? Options: 1) compare themes/characters/visual style, 2) trace their fairy-tale inspirations and adaptations, 3) deep dive into music and songs, 4) connections to Disney's animation history, or 5) something else you have in mind. Which would you like?"}) -> I want to connect the kingdoms of corona and arendelle based on their political connections based on the people at Elsa's corenation.
+run_agent. DEBU 17:56:10 AGENT main
+run_agent. DEBU 17:56:14 RESPONSE from main in 4.29 seconds
+tools.py   DEBU 17:56:14 TOOL search_nodes({'query': 'Corona (kingdom)', 'limit': 10})
+tools.py   DEBU 17:56:14 TOOL search_nodes({'query': 'Corona (kingdom)', 'limit': 10}) -> No nodes matching "Corona (kingdom)".
+run_agent. DEBU 17:56:14 AGENT main
+run_agent. DEBU 17:56:16 RESPONSE from main in 1.52 seconds
+tools.py   DEBU 17:56:16 TOOL search_nodes({'query': 'Arendelle', 'limit': 10})
+tools.py   DEBU 17:56:16 TOOL search_nodes({'query': 'Arendelle', 'limit': 10}) -> No nodes matching "Arendelle".
+run_agent. DEBU 17:56:16 AGENT main
+run_agent. DEBU 17:56:40 RESPONSE from main in 24.26 seconds
+tools.py   DEBU 17:56:40 TOOL add_node({'label': 'Arendelle', 'node_type': 'place', 'description': "Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by her parents; location of Elsa's coronation event."})
+tools.py   DEBU 17:56:40 TOOL add_node({'label': 'Arendelle', 'node_type': 'place', 'description': "Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by her parents; location of Elsa's coronation event."}) -> Created node "Arendelle" (id=arendelle, type=place).
+run_agent. DEBU 17:56:40 AGENT main
+run_agent. DEBU 17:56:41 RESPONSE from main in 1.52 seconds
+tools.py   DEBU 17:56:41 TOOL add_node({'label': 'Corona (kingdom)', 'node_type': 'place', 'description': "Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court."})
+tools.py   DEBU 17:56:41 TOOL add_node({'label': 'Corona (kingdom)', 'node_type': 'place', 'description': "Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court."}) -> Created node "Corona (kingdom)" (id=corona-kingdom, type=place).
+run_agent. DEBU 17:56:41 AGENT main
+run_agent. DEBU 17:56:43 RESPONSE from main in 1.31 seconds
+tools.py   DEBU 17:56:43 TOOL search_nodes({'query': 'Elsa coronation guests Arendelle coronation people', 'limit': 20})
+tools.py   DEBU 17:56:43 TOOL search_nodes({'query': 'Elsa coronation guests Arendelle coronation people', 'limit': 20}) -> Search results for "Elsa coronation guests Arendelle coronation people":
+  - Arendelle (id=arendelle, type=place, mentions=1): Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by he
+run_agent. DEBU 17:56:43 AGENT main
+run_agent. DEBU 17:56:52 RESPONSE from main in 9.72 seconds
+tools.py   DEBU 17:56:52 TOOL search_nodes({'query': 'Hans', 'limit': 20})
+tools.py   DEBU 17:56:52 TOOL search_nodes({'query': 'Hans', 'limit': 20}) -> Search results for "Hans":
+  - Frozen (id=frozen, type=event, mentions=1): Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and t
+run_agent. DEBU 17:56:52 AGENT main
+run_agent. DEBU 17:56:54 RESPONSE from main in 1.51 seconds
+tools.py   DEBU 17:56:54 TOOL add_node({'label': 'Elsa', 'node_type': 'person', 'description': 'Princess of Arendelle who becomes Queen after her coronation; has ice powers; central character in Frozen.'})
+tools.py   DEBU 17:56:54 TOOL add_node({'label': 'Elsa', 'node_type': 'person', 'description': 'Princess of Arendelle who becomes Queen after her coronation; has ice powers; central character in Frozen.'}) -> Created node "Elsa" (id=elsa, type=person).
+run_agent. DEBU 17:56:54 AGENT main
+run_agent. DEBU 17:56:56 RESPONSE from main in 1.73 seconds
+tools.py   DEBU 17:56:56 TOOL add_node({'label': 'Anna', 'node_type': 'person', 'description': "Princess of Arendelle; sister of Elsa; plays key role in Frozen's plot and attends Elsa's coronation."})
+tools.py   DEBU 17:56:56 TOOL add_node({'label': 'Anna', 'node_type': 'person', 'description': "Princess of Arendelle; sister of Elsa; plays key role in Frozen's plot and attends Elsa's coronation."}) -> Created node "Anna" (id=anna, type=person).
+run_agent. DEBU 17:56:56 AGENT main
+run_agent. DEBU 17:56:57 RESPONSE from main in 1.52 seconds
+tools.py   DEBU 17:56:57 TOOL add_edge({'source': 'elsa', 'target': 'arendelle', 'relationship': 'rules', 'context': 'Elsa rules the kingdom of Arendelle after her coronation.'})
+tools.py   DEBU 17:56:57 TOOL add_edge({'source': 'elsa', 'target': 'arendelle', 'relationship': 'rules', 'context': 'Elsa rules the kingdom of Arendelle after her coronation.'}) -> Created edge: elsa --[rules]--> arendelle.
+run_agent. DEBU 17:56:57 AGENT main
+run_agent. DEBU 17:56:59 RESPONSE from main in 1.72 seconds
+tools.py   DEBU 17:56:59 TOOL add_edge({'source': 'anna', 'target': 'arendelle', 'relationship': 'member of royal family', 'context': "Anna is Elsa's sister and a princess of Arendelle."})
+tools.py   DEBU 17:56:59 TOOL add_edge({'source': 'anna', 'target': 'arendelle', 'relationship': 'member of royal family', 'context': "Anna is Elsa's sister and a princess of Arendelle."}) -> Created edge: anna --[member of royal family]--> arendelle.
+run_agent. DEBU 17:56:59 AGENT main
+run_agent. DEBU 17:57:02 RESPONSE from main in 2.80 seconds
+tools.py   DEBU 17:57:02 TOOL add_node({'label': "Elsa's coronation", 'node_type': 'event', 'description': 'The coronation ceremony where Elsa becomes queen of Arendelle; features several guests including royalty and dignitaries from neighboring realms.'})
+tools.py   DEBU 17:57:02 TOOL add_node({'label': "Elsa's coronation", 'node_type': 'event', 'description': 'The coronation ceremony where Elsa becomes queen of Arendelle; features several guests including royalty and dignitaries from neighboring realms.'}) -> Created node "Elsa's coronation" (id=elsa-s-coronation, type=event).
+run_agent. DEBU 17:57:02 AGENT main
+run_agent. DEBU 17:57:03 RESPONSE from main in 1.52 seconds
+tools.py   DEBU 17:57:03 TOOL add_edge({'source': 'elsa-s-coronation', 'target': 'arendelle', 'relationship': 'held in', 'context': "Elsa's coronation ceremony takes place in Arendelle's capital."})
+tools.py   DEBU 17:57:03 TOOL add_edge({'source': 'elsa-s-coronation', 'target': 'arendelle', 'relationship': 'held in', 'context': "Elsa's coronation ceremony takes place in Arendelle's capital."}) -> Created edge: elsa-s-coronation --[held in]--> arendelle.
+run_agent. DEBU 17:57:03 AGENT main
+run_agent. DEBU 17:57:11 RESPONSE from main in 7.14 seconds
+tools.py   DEBU 17:57:11 TOOL search_nodes({'query': 'Rapunzel', 'limit': 20})
+tools.py   DEBU 17:57:11 TOOL search_nodes({'query': 'Rapunzel', 'limit': 20}) -> Search results for "Rapunzel":
+  - Tangled (id=tangled, type=event, mentions=1): Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with mo
+  - Corona (kingdom) (id=corona-kingdom, type=place, mentions=1): Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court.
+run_agent. DEBU 17:57:11 AGENT main
+run_agent. DEBU 17:57:12 RESPONSE from main in 1.82 seconds
+tools.py   DEBU 17:57:12 TOOL add_node({'label': 'Kingdom of Corona Royal Family', 'node_type': 'organization', 'description': 'The royal family and court of Corona, including the King, Queen, and their daughter Rapunzel; ruling body of the kingdom featured in Tangled.'})
+tools.py   DEBU 17:57:12 TOOL add_node({'label': 'Kingdom of Corona Royal Family', 'node_type': 'organization', 'description': 'The royal family and court of Corona, including the King, Queen, and their daughter Rapunzel; ruling body of the kingdom featured in Tangled.'}) -> Created node "Kingdom of Corona Royal Family" (id=kingdom-of-corona-royal-family, type=organization).
+run_agent. DEBU 17:57:12 AGENT main
+run_agent. DEBU 17:57:14 RESPONSE from main in 1.41 seconds
+tools.py   DEBU 17:57:14 TOOL add_edge({'source': 'kingdom-of-corona-royal-family', 'target': 'corona-kingdom', 'relationship': 'rules', 'context': 'The royal family governs the Kingdom of Corona.'})
+tools.py   DEBU 17:57:14 TOOL add_edge({'source': 'kingdom-of-corona-royal-family', 'target': 'corona-kingdom', 'relationship': 'rules', 'context': 'The royal family governs the Kingdom of Corona.'}) -> Created edge: kingdom-of-corona-royal-family --[rules]--> corona-kingdom.
+run_agent. DEBU 17:57:14 AGENT main
+run_agent. DEBU 17:57:16 RESPONSE from main in 1.97 seconds
+tools.py   DEBU 17:57:16 TOOL add_node({'label': 'Rapunzel', 'node_type': 'person', 'description': 'Princess of Corona; central character of Tangled; reunited with her parents after years in hiding.'})
+tools.py   DEBU 17:57:16 TOOL add_node({'label': 'Rapunzel', 'node_type': 'person', 'description': 'Princess of Corona; central character of Tangled; reunited with her parents after years in hiding.'}) -> Created node "Rapunzel" (id=rapunzel, type=person).
+run_agent. DEBU 17:57:16 AGENT main
+run_agent. DEBU 17:57:18 RESPONSE from main in 1.82 seconds
+tools.py   DEBU 17:57:18 TOOL add_edge({'source': 'rapunzel', 'target': 'kingdom-of-corona-royal-family', 'relationship': 'member of royal family', 'context': "Rapunzel is the daughter of Corona's royal couple."})
+tools.py   DEBU 17:57:18 TOOL add_edge({'source': 'rapunzel', 'target': 'kingdom-of-corona-royal-family', 'relationship': 'member of royal family', 'context': "Rapunzel is the daughter of Corona's royal couple."}) -> Created edge: rapunzel --[member of royal family]--> kingdom-of-corona-royal-family.
+run_agent. DEBU 17:57:18 AGENT main
+run_agent. DEBU 17:57:19 RESPONSE from main in 1.72 seconds
+tools.py   DEBU 17:57:19 TOOL search_nodes({'query': 'Elsa coronation guests list Hans Kristoff Duke of Weselton Oaken Arendelle ambassadors Corona guests', 'limit': 20})
+tools.py   DEBU 17:57:19 TOOL search_nodes({'query': 'Elsa coronation guests list Hans Kristoff Duke of Weselton Oaken Arendelle ambassadors Corona guests', 'limit': 20}) -> Search results for "Elsa coronation guests list Hans Kristoff Duke of Weselton Oaken Arendelle ambassadors Corona guests":
+  - Elsa's coronation (id=elsa-s-coronation, type=event, mentions=1): The coronation ceremony where Elsa becomes queen of Arendelle; features several guests including royalty and dignitaries
+  - Arendelle (id=arendelle, type=place, mentions=1): Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by he
+  - Elsa (id=elsa, type=person, mentions=1): Princess of Arendelle who becomes Queen after her coronation; has ice powers; central character in Frozen.
+  - Anna (id=anna, type=person, mentions=1): Princess of Arendelle; sister of Elsa; plays key role in Frozen's plot and attends Elsa's coronation.
+  - Frozen (id=frozen, type=event, mentions=1): Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and t
+  - Corona (kingdom) (id=corona-kingdom, type=place, mentions=1): Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court.
+  - Kingdom of Corona Royal Family (id=kingdom-of-corona-royal-family, type=organization, mentions=1): The royal family and court of Corona, including the King, Queen, and their daughter Rapunzel; ruling body of the kingdom
+  - Rapunzel (id=rapunzel, type=person, mentions=1): Princess of Corona; central character of Tangled; reunited with her parents after years in hiding.
+run_agent. DEBU 17:57:19 AGENT main
+run_agent. DEBU 17:57:23 RESPONSE from main in 3.11 seconds
+tools.py   DEBU 17:57:23 TOOL add_node({'label': 'Duke of Weselton', 'node_type': 'person', 'description': "Duke of Weselton, a visiting dignitary in Frozen who attends Elsa's coronation; suspicious of magic and business-oriented."})
+tools.py   DEBU 17:57:23 TOOL add_node({'label': 'Duke of Weselton', 'node_type': 'person', 'description': "Duke of Weselton, a visiting dignitary in Frozen who attends Elsa's coronation; suspicious of magic and business-oriented."}) -> Created node "Duke of Weselton" (id=duke-of-weselton, type=person).
+run_agent. DEBU 17:57:23 AGENT main
+run_agent. DEBU 17:57:24 RESPONSE from main in 1.87 seconds
+tools.py   DEBU 17:57:24 TOOL add_edge({'source': 'duke-of-weselton', 'target': 'arendelle', 'relationship': 'visiting dignitary', 'context': "Duke of Weselton attends events in Arendelle such as Elsa's coronation and has trade/political interests."})
+tools.py   DEBU 17:57:24 TOOL add_edge({'source': 'duke-of-weselton', 'target': 'arendelle', 'relationship': 'visiting dignitary', 'context': "Duke of Weselton attends events in Arendelle such as Elsa's coronation and has trade/political interests."}) -> Created edge: duke-of-weselton --[visiting dignitary]--> arendelle.
+run_agent. DEBU 17:57:24 AGENT main
+run_agent. DEBU 17:57:26 RESPONSE from main in 1.71 seconds
+tools.py   DEBU 17:57:26 TOOL add_node({'label': 'Hans', 'node_type': 'person', 'description': "Prince from the Southern Isles who attends Elsa's coronation in Arendelle; later revealed to have political ambitions and deceitful plans."})
+tools.py   DEBU 17:57:26 TOOL add_node({'label': 'Hans', 'node_type': 'person', 'description': "Prince from the Southern Isles who attends Elsa's coronation in Arendelle; later revealed to have political ambitions and deceitful plans."}) -> Created node "Hans" (id=hans, type=person).
+run_agent. DEBU 17:57:26 AGENT main
+run_agent. DEBU 17:57:28 RESPONSE from main in 1.41 seconds
+tools.py   DEBU 17:57:28 TOOL add_edge({'source': 'hans', 'target': 'elsa-s-coronation', 'relationship': 'attendee', 'context': "Hans attends Elsa's coronation as a visiting prince."})
+tools.py   DEBU 17:57:28 TOOL add_edge({'source': 'hans', 'target': 'elsa-s-coronation', 'relationship': 'attendee', 'context': "Hans attends Elsa's coronation as a visiting prince."}) -> Created edge: hans --[attendee]--> elsa-s-coronation.
+run_agent. DEBU 17:57:28 AGENT main
+run_agent. DEBU 17:57:29 RESPONSE from main in 1.82 seconds
+tools.py   DEBU 17:57:29 TOOL add_edge({'source': 'hans', 'target': 'arendelle', 'relationship': 'ally/visitor', 'context': 'Hans presents himself as a friendly prince from the Southern Isles courting Princess Anna; later attempts to take control of Arendelle.'})
+tools.py   DEBU 17:57:29 TOOL add_edge({'source': 'hans', 'target': 'arendelle', 'relationship': 'ally/visitor', 'context': 'Hans presents himself as a friendly prince from the Southern Isles courting Princess Anna; later attempts to take control of Arendelle.'}) -> Created edge: hans --[ally/visitor]--> arendelle.
+run_agent. DEBU 17:57:29 AGENT main
+run_agent. DEBU 17:57:33 RESPONSE from main in 3.15 seconds
+tools.py   DEBU 17:57:33 TOOL add_node({'label': 'Southern Isles', 'node_type': 'place', 'description': "A group of islands and Hans's home kingdom in Frozen; ruled by its own royal family; represented at Arendelle events by Prince Hans."})
+tools.py   DEBU 17:57:33 TOOL add_node({'label': 'Southern Isles', 'node_type': 'place', 'description': "A group of islands and Hans's home kingdom in Frozen; ruled by its own royal family; represented at Arendelle events by Prince Hans."}) -> Created node "Southern Isles" (id=southern-isles, type=place).
+run_agent. DEBU 17:57:33 AGENT main
+run_agent. DEBU 17:57:34 RESPONSE from main in 1.70 seconds
+tools.py   DEBU 17:57:34 TOOL add_edge({'source': 'hans', 'target': 'southern-isles', 'relationship': 'prince of', 'context': 'Hans is a prince representing the Southern Isles.'})
+tools.py   DEBU 17:57:34 TOOL add_edge({'source': 'hans', 'target': 'southern-isles', 'relationship': 'prince of', 'context': 'Hans is a prince representing the Southern Isles.'}) -> Created edge: hans --[prince of]--> southern-isles.
+run_agent. DEBU 17:57:34 AGENT main
+run_agent. DEBU 17:57:36 RESPONSE from main in 1.52 seconds
+tools.py   DEBU 17:57:36 TOOL search_nodes({'query': 'Tangled characters attending other Disney coronations or link between Corona and Arendelle', 'limit': 20})
+tools.py   DEBU 17:57:36 TOOL search_nodes({'query': 'Tangled characters attending other Disney coronations or link between Corona and Arendelle', 'limit': 20}) -> Search results for "Tangled characters attending other Disney coronations or link between Corona and Arendelle":
+  - Arendelle (id=arendelle, type=place, mentions=1): Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by he
+  - Corona (kingdom) (id=corona-kingdom, type=place, mentions=1): Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court.
+  - Tangled (id=tangled, type=event, mentions=1): Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with mo
+  - Anna (id=anna, type=person, mentions=1): Princess of Arendelle; sister of Elsa; plays key role in Frozen's plot and attends Elsa's coronation.
+  - Elsa's coronation (id=elsa-s-coronation, type=event, mentions=1): The coronation ceremony where Elsa becomes queen of Arendelle; features several guests including royalty and dignitaries
+  - Kingdom of Corona Royal Family (id=kingdom-of-corona-royal-family, type=organization, mentions=1): The royal family and court of Corona, including the King, Queen, and their daughter Rapunzel; ruling body of the kingdom
+  - Hans (id=hans, type=person, mentions=1): Prince from the Southern Isles who attends Elsa's coronation in Arendelle; later revealed to have political ambitions an
+  - Frozen (id=frozen, type=event, mentions=1): Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and t
+  - Elsa (id=elsa, type=person, mentions=1): Princess of Arendelle who becomes Queen after her coronation; has ice powers; central character in Frozen.
+  - Rapunzel (id=rapunzel, type=person, mentions=1): Princess of Corona; central character of Tangled; reunited with her parents after years in hiding.
+  - Duke of Weselton (id=duke-of-weselton, type=person, mentions=1): Duke of Weselton, a visiting dignitary in Frozen who attends Elsa's coronation; suspicious of magic and business-oriente
+  - Southern Isles (id=southern-isles, type=place, mentions=1): A group of islands and Hans's home kingdom in Frozen; ruled by its own royal family; represented at Arendelle events by
+run_agent. DEBU 17:57:36 AGENT main
+run_agent. DEBU 17:57:38 RESPONSE from main in 2.14 seconds
+tools.py   DEBU 17:57:38 TOOL add_node({'label': 'Tangled coronation cameo theory', 'node_type': 'idea', 'description': "Fan theory and Easter-egg discussions about connections between Disney films, including possible cross-over cameo appearances of Corona characters at other films' events (e.g., Rapunzel at Elsa's coronation)."})
+tools.py   DEBU 17:57:38 TOOL add_node({'label': 'Tangled coronation cameo theory', 'node_type': 'idea', 'description': "Fan theory and Easter-egg discussions about connections between Disney films, including possible cross-over cameo appearances of Corona characters at other films' events (e.g., Rapunzel at Elsa's coronation)."}) -> Created node "Tangled coronation cameo theory" (id=tangled-coronation-cameo-theory, type=idea).
+run_agent. DEBU 17:57:38 AGENT main
+run_agent. DEBU 17:57:40 RESPONSE from main in 1.79 seconds
+tools.py   DEBU 17:57:40 TOOL add_edge({'source': 'tangled-coronation-cameo-theory', 'target': 'elsa-s-coronation', 'relationship': 'applies to', 'context': "This theory discusses possible cameos at Elsa's coronation."})
+tools.py   DEBU 17:57:40 TOOL add_edge({'source': 'tangled-coronation-cameo-theory', 'target': 'elsa-s-coronation', 'relationship': 'applies to', 'context': "This theory discusses possible cameos at Elsa's coronation."}) -> Created edge: tangled-coronation-cameo-theory --[applies to]--> elsa-s-coronation.
+run_agent. DEBU 17:57:40 AGENT main
+run_agent. DEBU 17:57:42 RESPONSE from main in 1.64 seconds
+tools.py   DEBU 17:57:42 TOOL search_nodes({'query': 'Are there Corona characters at Elsa coronation cameo Rapunzel cameo Frozen Easter egg', 'limit': 20})
+tools.py   DEBU 17:57:42 TOOL search_nodes({'query': 'Are there Corona characters at Elsa coronation cameo Rapunzel cameo Frozen Easter egg', 'limit': 20}) -> Search results for "Are there Corona characters at Elsa coronation cameo Rapunzel cameo Frozen Easter egg":
+  - Tangled coronation cameo theory (id=tangled-coronation-cameo-theory, type=idea, mentions=1): Fan theory and Easter-egg discussions about connections between Disney films, including possible cross-over cameo appear
+  - Arendelle (id=arendelle, type=place, mentions=1): Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by he
+  - Elsa (id=elsa, type=person, mentions=1): Princess of Arendelle who becomes Queen after her coronation; has ice powers; central character in Frozen.
+  - Anna (id=anna, type=person, mentions=1): Princess of Arendelle; sister of Elsa; plays key role in Frozen's plot and attends Elsa's coronation.
+  - Elsa's coronation (id=elsa-s-coronation, type=event, mentions=1): The coronation ceremony where Elsa becomes queen of Arendelle; features several guests including royalty and dignitaries
+  - Duke of Weselton (id=duke-of-weselton, type=person, mentions=1): Duke of Weselton, a visiting dignitary in Frozen who attends Elsa's coronation; suspicious of magic and business-oriente
+  - Hans (id=hans, type=person, mentions=1): Prince from the Southern Isles who attends Elsa's coronation in Arendelle; later revealed to have political ambitions an
+  - Kingdom of Corona Royal Family (id=kingdom-of-corona-royal-family, type=organization, mentions=1): The royal family and court of Corona, including the King, Queen, and their daughter Rapunzel; ruling body of the kingdom
+  - Rapunzel (id=rapunzel, type=person, mentions=1): Princess of Corona; central character of Tangled; reunited with her parents after years in hiding.
+  - Southern Isles (id=southern-isles, type=place, mentions=1): A group of islands and Hans's home kingdom in Frozen; ruled by its own royal family; represented at Arendelle events by
+  - Tangled (id=tangled, type=event, mentions=1): Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with mo
+  - Frozen (id=frozen, type=event, mentions=1): Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and t
+  - Corona (kingdom) (id=corona-kingdom, type=place, mentions=1): Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court.
+run_agent. DEBU 17:57:42 AGENT main
+run_agent. DEBU 17:57:43 RESPONSE from main in 1.84 seconds
+tools.py   DEBU 17:57:43 TOOL add_node({'label': "Elsa's coronation guest list (film evidence)", 'node_type': 'idea', 'description': "Compiled list of identifiable guests and extras shown at Elsa's coronation in Frozen based on film observation and Easter-egg discussions."})
+tools.py   DEBU 17:57:43 TOOL add_node({'label': "Elsa's coronation guest list (film evidence)", 'node_type': 'idea', 'description': "Compiled list of identifiable guests and extras shown at Elsa's coronation in Frozen based on film observation and Easter-egg discussions."}) -> Created node "Elsa's coronation guest list (film evidence)" (id=elsa-s-coronation-guest-list-film-evidence, type=idea).
+run_agent. DEBU 17:57:43 AGENT main
+run_agent. DEBU 17:57:45 RESPONSE from main in 1.77 seconds
+tools.py   DEBU 17:57:45 TOOL add_edge({'source': 'elsa-s-coronation-guest-list-film-evidence', 'target': 'elsa-s-coronation', 'relationship': 'documents', 'context': 'Collects on-screen identifiable attendees and notable extras visible during the coronation scene.'})
+tools.py   DEBU 17:57:45 TOOL add_edge({'source': 'elsa-s-coronation-guest-list-film-evidence', 'target': 'elsa-s-coronation', 'relationship': 'documents', 'context': 'Collects on-screen identifiable attendees and notable extras visible during the coronation scene.'}) -> Created edge: elsa-s-coronation-guest-list-film-evidence --[documents]--> elsa-s-coronation.
+run_agent. DEBU 17:57:45 AGENT main
+run_agent. DEBU 17:57:48 RESPONSE from main in 2.36 seconds
+tools.py   DEBU 17:57:48 TOOL add_node({'label': 'Oaken', 'node_type': 'person', 'description': "Owner of Wandering Oaken's Trading Post and Sauna; appears at Elsa's coronation crowd scenes and later in the film as a shopkeeper."})
+tools.py   DEBU 17:57:48 TOOL add_node({'label': 'Oaken', 'node_type': 'person', 'description': "Owner of Wandering Oaken's Trading Post and Sauna; appears at Elsa's coronation crowd scenes and later in the film as a shopkeeper."}) -> Created node "Oaken" (id=oaken, type=person).
+run_agent. DEBU 17:57:48 AGENT main
+run_agent. DEBU 17:57:49 RESPONSE from main in 1.78 seconds
+tools.py   DEBU 17:57:49 TOOL add_edge({'source': 'oaken', 'target': 'elsa-s-coronation', 'relationship': 'crowd attendee/extra', 'context': 'Oaken or a similar-looking villager appears among crowd scenes in Frozen, often cited in Easter-egg lists.'})
+tools.py   DEBU 17:57:49 TOOL add_edge({'source': 'oaken', 'target': 'elsa-s-coronation', 'relationship': 'crowd attendee/extra', 'context': 'Oaken or a similar-looking villager appears among crowd scenes in Frozen, often cited in Easter-egg lists.'}) -> Created edge: oaken --[crowd attendee/extra]--> elsa-s-coronation.
+run_agent. DEBU 17:57:49 AGENT main
+run_agent. DEBU 17:57:51 RESPONSE from main in 1.92 seconds
+tools.py   DEBU 17:57:51 TOOL search_nodes({'query': 'Are Rapunzel or Corona characters shown at Elsa coronation cameo confirmed', 'limit': 20})
+tools.py   DEBU 17:57:51 TOOL search_nodes({'query': 'Are Rapunzel or Corona characters shown at Elsa coronation cameo confirmed', 'limit': 20}) -> Search results for "Are Rapunzel or Corona characters shown at Elsa coronation cameo confirmed":
+  - Tangled coronation cameo theory (id=tangled-coronation-cameo-theory, type=idea, mentions=1): Fan theory and Easter-egg discussions about connections between Disney films, including possible cross-over cameo appear
+  - Arendelle (id=arendelle, type=place, mentions=1): Fictional Scandinavian-style kingdom from Disney's Frozen; ruled by Queen Elsa (after coronation) and historically by he
+  - Elsa (id=elsa, type=person, mentions=1): Princess of Arendelle who becomes Queen after her coronation; has ice powers; central character in Frozen.
+  - Anna (id=anna, type=person, mentions=1): Princess of Arendelle; sister of Elsa; plays key role in Frozen's plot and attends Elsa's coronation.
+  - Elsa's coronation (id=elsa-s-coronation, type=event, mentions=1): The coronation ceremony where Elsa becomes queen of Arendelle; features several guests including royalty and dignitaries
+  - Hans (id=hans, type=person, mentions=1): Prince from the Southern Isles who attends Elsa's coronation in Arendelle; later revealed to have political ambitions an
+  - Elsa's coronation guest list (film evidence) (id=elsa-s-coronation-guest-list-film-evidence, type=idea, mentions=1): Compiled list of identifiable guests and extras shown at Elsa's coronation in Frozen based on film observation and Easte
+  - Duke of Weselton (id=duke-of-weselton, type=person, mentions=1): Duke of Weselton, a visiting dignitary in Frozen who attends Elsa's coronation; suspicious of magic and business-oriente
+  - Oaken (id=oaken, type=person, mentions=1): Owner of Wandering Oaken's Trading Post and Sauna; appears at Elsa's coronation crowd scenes and later in the film as a
+  - Kingdom of Corona Royal Family (id=kingdom-of-corona-royal-family, type=organization, mentions=1): The royal family and court of Corona, including the King, Queen, and their daughter Rapunzel; ruling body of the kingdom
+  - Rapunzel (id=rapunzel, type=person, mentions=1): Princess of Corona; central character of Tangled; reunited with her parents after years in hiding.
+  - Tangled (id=tangled, type=event, mentions=1): Disney animated film (2010) based on the Rapunzel fairy tale; notable for blending traditional fairy-tale themes with mo
+  - Corona (kingdom) (id=corona-kingdom, type=place, mentions=1): Fictional kingdom from Disney's Tangled, ruled by Queen/King; setting of Rapunzel's story; has royal family and court.
+  - Frozen (id=frozen, type=event, mentions=1): Disney animated film (2013) inspired by Hans Christian Andersen's 'The Snow Queen'; known for themes of sisterhood and t
+  - Southern Isles (id=southern-isles, type=place, mentions=1): A group of islands and Hans's home kingdom in Frozen; ruled by its own royal family; represented at Arendelle events by
+run_agent. DEBU 17:57:51 AGENT main
+run_agent. DEBU 17:57:56 RESPONSE from main in 4.88 seconds
+tools.py   DEBU 17:57:56 TOOL find_path({'source': 'corona-kingdom', 'target': 'arendelle'})
+tools.py   DEBU 17:57:56 TOOL find_path({'source': 'corona-kingdom', 'target': 'arendelle'}) -> No path found between "corona-kingdom" and "arendelle".
+run_agent. DEBU 17:57:56 AGENT main
+run_agent. DEBU 17:58:17 RESPONSE from main in 21.06 seconds
+tools.py   DEBU 17:58:17 TOOL talk_to_user({'message': 'I can do this two ways — using only confirmed (canonical) connections, or including fan-theory/Easter-egg connections (e.g., possible Rapunzel/Corona cameo at Elsa’s coronation). Which would you prefer?\n\nQuick summary of what I already have in the graph: Arendelle, Elsa, Anna, Elsa’s coronation (event), Duke of Weselton, Hans (prince of the Southern Isles), Corona (kingdom), Kingdom of Corona Royal Family, Rapunzel, and a fan-theory node about possible Tangled cameos. Right now there is no canonical path between Corona and Arendelle.\n\nIf you want canonical-only, I can connect Arendelle to other kingdoms represented at the coronation (for example: Arendelle ← Hans ← Southern Isles; Duke of Weselton as a visiting dignitary) and leave Corona unconnected.\n\nIf you want to include fan-theory/Easter-egg links, I can add a labeled, speculative edge showing Corona/Corona royal family as present at Elsa’s coronation (marked as "fan-theory / cameo"), which will create a path Corona → (attended) → Elsa’s coronation → Arendelle.\n\nWhat do you want me to do? If you choose speculative ties, I’ll add the appropriate node/edge(s) and then show the new path(s) linking Corona and Arendelle.'})
+
+main: I can do this two ways — using only confirmed (canonical) connections, or including fan-theory/Easter-egg connections (e.g., possible Rapunzel/Corona cameo at Elsa’s coronation). Which would you prefer?
+
+Quick summary of what I already have in the graph: Arendelle, Elsa, Anna, Elsa’s coronation (event), Duke of Weselton, Hans (prince of the Southern Isles), Corona (kingdom), Kingdom of Corona Royal Family, Rapunzel, and a fan-theory node about possible Tangled cameos. Right now there is no canonical path between Corona and Arendelle.
+
+If you want canonical-only, I can connect Arendelle to other kingdoms represented at the coronation (for example: Arendelle ← Hans ← Southern Isles; Duke of Weselton as a visiting dignitary) and leave Corona unconnected.
+
+If you want to include fan-theory/Easter-egg links, I can add a labeled, speculative edge showing Corona/Corona royal family as present at Elsa’s coronation (marked as "fan-theory / cameo"), which will create a path Corona → (attended) → Elsa’s coronation → Arendelle.
+
+What do you want me to do? If you choose speculative ties, I’ll add the appropriate node/edge(s) and then show the new path(s) linking Corona and Arendelle.
+
+User: /save
+
+Graph saved to disk.
+tools.py   DEBU 17:59:15 TOOL talk_to_user({'message': 'I can do this two ways — using only confirmed (canonical) connections, or including fan-theory/Easter-egg connections (e.g., possible Rapunzel/Corona cameo at Elsa’s coronation). Which would you prefer?\n\nQuick summary of what I already have in the graph: Arendelle, Elsa, Anna, Elsa’s coronation (event), Duke of Weselton, Hans (prince of the Southern Isles), Corona (kingdom), Kingdom of Corona Royal Family, Rapunzel, and a fan-theory node about possible Tangled cameos. Right now there is no canonical path between Corona and Arendelle.\n\nIf you want canonical-only, I can connect Arendelle to other kingdoms represented at the coronation (for example: Arendelle ← Hans ← Southern Isles; Duke of Weselton as a visiting dignitary) and leave Corona unconnected.\n\nIf you want to include fan-theory/Easter-egg links, I can add a labeled, speculative edge showing Corona/Corona royal family as present at Elsa’s coronation (marked as "fan-theory / cameo"), which will create a path Corona → (attended) → Elsa’s coronation → Arendelle.\n\nWhat do you want me to do? If you choose speculative ties, I’ll add the appropriate node/edge(s) and then show the new path(s) linking Corona and Arendelle.'}) -> [Slash command result]
+Graph saved to disk.
+run_agent. DEBU 17:59:31 AGENT main
+run_agent. DEBU 17:59:33 RESPONSE from main in 1.94 seconds
+tools.py   DEBU 17:59:33 TOOL talk_to_user({'message': 'Hi — I build a persistent concept graph as we talk. What would you like to explore or add to the graph today?'})
+
+main: Hi — I build a persistent concept graph as we talk. What would you like to explore or add to the graph today?
+
+User: /exit
+----------- Usage ------------
+~~~~~~~~~~gpt-5-mini~~~~~~~~~~
+Input (tokens): 129633
+Cached (tokens): 104832
+Output (tokens): 7092
+Reasoning (tokens): 4416
+gpt-5-mini cost (USD): $0.049213
+~~~~gpt-5-mini-2025-08-07~~~~~
+Input (tokens): 5982
+Cached (tokens): 0
+Output (tokens): 2136
+Reasoning (tokens): 1024
+usage.py   WARN 18:05:36 No pricing rates configured for model gpt-5-mini-2025-08-07
+gpt-5-mini-2025-08-07 cost (USD): $0.000000
+usage.py   WARN 18:05:36 No pricing rates configured for model gpt-5-mini-2025-08-07
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Total cost (USD): $0.049213

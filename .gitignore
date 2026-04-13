@@ -8,3 +8,19 @@ src/shared/text
 
 **/.venv
 **/my_chroma_db
+src/unit3_agents/lecture3g_evaluation_and_security/class_material/resumes
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# JetBrains IDE
+.idea/
+
+# Agent runtime data (graphbot homework)
+.graph_memory/
+.memories/
+conversations/
