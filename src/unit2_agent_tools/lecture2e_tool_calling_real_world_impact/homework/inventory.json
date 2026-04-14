@@ -1,0 +1,102 @@
+{
+  "store": "Campus Tech Shop",
+  "last_updated": "2026-04-10",
+  "items": [
+    {
+      "id": 1,
+      "name": "Mechanical Keyboard",
+      "category": "peripherals",
+      "price": 89.99,
+      "stock": 23,
+      "rating": 4.7
+    },
+    {
+      "id": 2,
+      "name": "USB-C Hub",
+      "category": "peripherals",
+      "price": 34.50,
+      "stock": 45,
+      "rating": 4.2
+    },
+    {
+      "id": 3,
+      "name": "27\" Monitor",
+      "category": "displays",
+      "price": 299.00,
+      "stock": 8,
+      "rating": 4.8
+    },
+    {
+      "id": 4,
+      "name": "Wireless Mouse",
+      "category": "peripherals",
+      "price": 24.99,
+      "stock": 67,
+      "rating": 4.0
+    },
+    {
+      "id": 5,
+      "name": "Laptop Stand",
+      "category": "accessories",
+      "price": 42.00,
+      "stock": 31,
+      "rating": 4.5
+    },
+    {
+      "id": 6,
+      "name": "Webcam 1080p",
+      "category": "peripherals",
+      "price": 59.99,
+      "stock": 0,
+      "rating": 3.9
+    },
+    {
+      "id": 7,
+      "name": "Noise-Canceling Headphones",
+      "category": "audio",
+      "price": 149.99,
+      "stock": 12,
+      "rating": 4.6
+    },
+    {
+      "id": 8,
+      "name": "Portable SSD 1TB",
+      "category": "storage",
+      "price": 79.99,
+      "stock": 19,
+      "rating": 4.9
+    },
+    {
+      "id": 9,
+      "name": "Desk Lamp (LED)",
+      "category": "accessories",
+      "price": 28.00,
+      "stock": 54,
+      "rating": 4.1
+    },
+    {
+      "id": 10,
+      "name": "HDMI Cable 6ft",
+      "category": "cables",
+      "price": 9.99,
+      "stock": 120,
+      "rating": 4.3
+    },
+    {
+      "id": 11,
+      "name": "Surge Protector",
+      "category": "accessories",
+      "price": 19.99,
+      "stock": 38,
+      "rating": 4.4
+    },
+    {
+      "id": 12,
+      "name": "Graphics Tablet",
+      "category": "peripherals",
+      "price": 199.00,
+      "stock": 5,
+      "rating": 4.7
+    }
+  ]
+}

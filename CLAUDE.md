@@ -10,6 +10,9 @@ This is a BYU CS 301R course repository for **Agentic Engineering**. It contains
 
 ```
 src/
+├── shared/
+│   └── text/                    # Shared text corpora (scriptures, conference talks, movies)
+│
 ├── unit1_prompt_engineering/
 │   ├── lecture1a_intro_to_completion/
 │   │   ├── class_material/      # Basic completion API usage
@@ -18,43 +21,73 @@ src/
 │   │   ├── class_material/      # Few-shot, structured output, YAML configs
 │   │   └── homework/            # Enhanced completion app
 │   ├── lecture1c_chat/
-│   │   └── class_material/      # Chatbot with Gradio UI, personas
+│   │   ├── class_material/      # Chatbot with Gradio UI, personas
+│   │   └── homework/            # Chat logs, custom prompts
 │   ├── lecture1d_jailbreaking/
-│   │   └── class_material/      # Adversarial prompts, agent conversations
+│   │   ├── class_material/      # Adversarial prompts, agent conversations
+│   │   └── homework/            # Student jailbreaking experiments
 │   ├── lecture1e_reasoning/
-│   │   └── class_material/      # Chain-of-thought, reasoning display
-│   └── lecture1f_discipleship/  # Ethics discussion (no code)
+│   │   ├── class_material/      # Chain-of-thought, reasoning display
+│   │   └── homework/            # Reasoning chatbot, chat logs
+│   └── lecture1f_discipleship_and_ai_chatbots/
+│       └── homework/            # Ethics write-up (no code)
 │
 ├── unit2_agent_tools/
 │   ├── lecture2a_rag/
-│   │   └── class_material/      # Embeddings, vector search (Jupyter)
+│   │   ├── class_material/      # Embeddings, vector search (Jupyter)
+│   │   └── homework/            # Embedding playground and practice
 │   ├── lecture2b_rag_solutions/
-│   │   └── class_material/      # ChromaDB, document chunking
-│   ├── lecture2c_ethics/        # Ethics discussion (no code)
+│   │   ├── class_material/      # ChromaDB, document chunking
+│   │   └── homework/            # RAG chatbot with ChromaDB
+│   ├── lecture2c_ethics_and_challenges_of_content_representation/
+│   │   └── homework/            # Ethics write-up (no code)
 │   ├── lecture2d_tool_calling/
-│   │   └── class_material/      # Function calling, ToolBox class
-│   ├── lecture2e_real_world_impact/
-│   │   └── class_material/      # Docker containers, code execution
+│   │   ├── class_material/      # Function calling, ToolBox class
+│   │   └── homework/            # Tool-calling chatbot
+│   ├── lecture2e_tool_calling_real_world_impact/
+│   │   ├── class_material/      # Docker containers, code execution, human-in-the-loop
+│   │   └── homework/            # Chatbot with web search, approval gates, code exec
 │   ├── lecture2f_mcp_and_alternatives/
-│   │   └── class_material/      # MCP servers, FastMCP, AWS Lambda
-│   └── lecture2g_ethics/        # Ethics discussion (no code)
+│   │   ├── class_material/      # MCP servers, FastMCP, AWS Lambda
+│   │   └── homework/            # MCP chatbot with custom FastMCP server
+│   └── lecture2g_ethics_and_human_factors_of_tool_calling/
+│       └── homework/            # Ethics write-up (no code)
 │
-├── unit2.5_midterm/             # Midterm assessment questions
+├── unit2.5_midterm/             # Midterm assessment questions (Units 1-2)
 │
 ├── unit3_agents/
 │   ├── lecture3a_agents_and_multi_agent_workflows/
 │   │   ├── class_material/      # YAML-based multi-agent orchestration
-│   │   └── homework/            # Multi-agent storytelling workflow
+│   │   └── homework/            # Multi-agent storytelling workflow (Hoid)
 │   ├── lecture3b_agents_as_tools/
 │   │   ├── class_material/      # Agents calling agents dynamically
 │   │   └── homework/            # Content censorship workflow
 │   ├── lecture3c_class_project_and_discussion/ # Project planning (no code)
-│   ├── lecture3d_codex_and_vibecoding/         # Codex and vibe coding
+│   ├── lecture3d_codex_and_vibecoding/
+│   │   └── homework/            # Codex-built web app, AGENTS.md
 │   ├── lecture3e_harness_engineering/
-│   │   └── homework/            # myteam OWASP Top 10 security audit team
-│   └── lecture3f_cookbook_and_advanced_structure/ # Advanced patterns
+│   │   ├── class_material/      # myteam framework, AGENTS.md
+│   │   └── homework/            # OWASP Top 10 security audit team
+│   ├── lecture3f_cookbook_and_advanced_structure/
+│   │   ├── class_material/      # Episodic memory, MemGPT patterns
+│   │   └── homework/            # Graph memory chatbot
+│   ├── lecture3g_evaluation_and_security/
+│   │   ├── class_material/      # Resume copilot app, agent evaluation
+│   │   └── homework/            # Evaluation write-up
+│   └── lecture3h_ethics_of_agentic_applications/
+│       └── homework/            # Ethics write-up (no code)
 │
-└── unit4.5_final/               # Final assessment questions
+├── unit4_multimodal/
+│   ├── lecture4a_images/
+│   │   ├── class_material/      # Image generation, description, graph generation
+│   │   └── homework/            # Image analysis and transcription
+│   ├── lecture4b_audio/
+│   │   ├── class_material/      # Speech-to-text, text-to-speech, realtime API
+│   │   └── homework/            # Audio write-up
+│   └── lecture4c_ethics_of_audio_image_and_video_generation/
+│       └── homework/            # Ethics write-up (no code)
+│
+└── unit4.5_final/               # Final assessment questions (Units 3-4)
 ```
 
 ## Environment Setup
@@ -130,10 +163,17 @@ cd src/unit2_agent_tools/lecture2d_tool_calling/class_material
 python toolbot.py --web
 ```
 
-**Code Execution in Docker (Lecture 2e):**
+**Code Execution & Tool Chatbot (Lecture 2e):**
 ```bash
-cd src/unit2_agent_tools/lecture2e_real_world_impact/class_material
-python codebot.py
+cd src/unit2_agent_tools/lecture2e_tool_calling_real_world_impact/class_material
+python codebot.py                          # Docker code execution demo
+python toolbot.py --web                    # Class material toolbot
+
+cd src/unit2_agent_tools/lecture2e_tool_calling_real_world_impact/homework
+python chatbot.py prompt.md                # Console mode, local code execution
+python chatbot.py prompt.md --web          # Gradio web UI
+python chatbot.py prompt.md --docker       # Docker sandbox for code execution
+python chatbot.py prompt.md --debug        # Show tool calls/results inline
 ```
 
 **MCP Server (Lecture 2f):**
@@ -168,6 +208,19 @@ cd src/unit3_agents/lecture3b_agents_as_tools/homework
 python censor.py         # Content censorship workflow
 ```
 
+**Graph Memory Chatbot (Lecture 3f):**
+```bash
+cd src/unit3_agents/lecture3f_cookbook_and_advanced_structure/homework
+python graphbot.py                         # Graph-based memory chatbot
+python reset.py                            # Reset memory state
+```
+
+**Resume Copilot (Lecture 3g):**
+```bash
+cd src/unit3_agents/lecture3g_evaluation_and_security/class_material
+python resume_copilot_app.py               # Resume analysis app
+```
+
 **Harness Engineering with myteam (Lecture 3e):**
 ```bash
 cd src/unit3_agents/lecture3e_harness_engineering/homework
@@ -177,6 +230,25 @@ myteam get role            # Load coordinator role and begin audit workflow
 The homework directory contains a `.myteam/` team configured as an OWASP Top 10
 security audit system. It is designed to be run with Codex: open Codex in the
 homework directory and it will read `AGENTS.md` to bootstrap the workflow.
+
+### Unit 4: Multimodal
+
+**Image Generation & Description (Lecture 4a):**
+```bash
+cd src/unit4_multimodal/lecture4a_images/class_material
+python image_gen.py                        # Generate images
+python image_desc.py                       # Describe/analyze images
+python graph_gen.py                        # Generate graphs from data
+```
+
+**Audio & Speech (Lecture 4b):**
+```bash
+cd src/unit4_multimodal/lecture4b_audio/class_material
+python speech_to_text.py                   # Transcribe audio
+python text_to_speech.py                   # Generate speech
+python realtime_chat.py                    # Realtime voice conversation
+python speech.py                           # Speech utilities
+```
 
 ## Architecture
 
@@ -519,6 +591,13 @@ print_usage(model, usage)
 - Context variables
 - myteam (filesystem-based agent role/skill framework)
 
+### Unit 4: Multimodal
+- OpenAI Images API (DALL-E image generation)
+- OpenAI Vision API (image description/analysis)
+- OpenAI Audio API (speech-to-text, text-to-speech)
+- OpenAI Realtime API (voice conversations)
+- Matplotlib/graph generation from data
+
 ## Notable Files and Utilities
 
 **Used Across Multiple Lectures:**
@@ -530,14 +609,17 @@ print_usage(model, usage)
 - `lecture1c_chat/chatbot.py` - Basic chat with Gradio
 - `lecture1e_reasoning/chatbot.py` - Chat with reasoning display
 - `lecture2d_tool_calling/toolbot.py` - Chat with tools
-- `lecture2e_real_world_impact/toolbot.py` - Chat with code execution
+- `lecture2e_tool_calling_real_world_impact/toolbot.py` - Chat with code execution
+- `lecture2e_tool_calling_real_world_impact/homework/chatbot.py` - Chat with web search, approval gates, local/Docker code exec
 - `lecture2f_mcp_and_alternatives/mcpbot.py` - Chat with MCP
+- `lecture3f_.../homework/graphbot.py` - Chat with graph-based memory
 
 **Multi-Agent Systems:**
 - `lecture3a/.../deep_research.py` - Research workflow (5 agents, sequential + parallel)
 - `lecture3a/.../hoid_was_here.py` - Storytelling workflow (5 agents with Hoid character)
 - `lecture3b/.../agents.py` - Agent-as-tool orchestration (dynamic delegation)
 - `lecture3e/.../homework/.myteam/` - OWASP Top 10 security audit team (14 skills, file-based handoff)
+- `lecture3g/.../resume_copilot_app.py` - Resume analysis with agent evaluation
 
 ## Homework Pattern
 
@@ -550,7 +632,7 @@ Each homework typically includes:
 ## Assessment Files
 
 - `unit2.5_midterm/` - Essay questions on Units 1-2
-- `unit4.5_final/` - Essay questions on Unit 3
+- `unit4.5_final/` - Essay questions on Units 3-4
 
 ## Common CLI Patterns
 
