@@ -137,7 +137,7 @@ def talk_to_user(message: str):
       changes I would switch back to plan mode and iterate on this process until I have the web-app working the way I
       want it to.
 
-## Section 3e: Harness Engineering
+### Section 3e: Harness Engineering
 
 * What is an agent skill? How is it defined? How is it used?
     * An agent skill is a portable, reusable package of domain knowledge and procedural instructions that teaches an
@@ -182,3 +182,187 @@ def talk_to_user(message: str):
       make human-in-the-loop more effective by keeping the actions performed by the agent clear to the user. The goal of
       agent legibility is to make human oversight of a system possible in a way that enables the effective application
       of human judgment.
+
+### Section 3f: Cookbook and Advanced Structure
+
+* Explain the differences between working memory, episodic memory, and semantic memory.
+    * Working memory is the short-duration active store that hold all information currently in use during a task.
+      It is the memory relating to the current conversation, this includes the context of the conversation
+      and what has been said relating to recent tasks. This also includes the agent's reasoning state, tool call
+      results, intermediate outputs, and any injected system prompts. In short, working memory is the active context
+      window of the agent.
+    * Episodic memory is a type of long-term memory that stores records of specific past events, anchored in time and
+      context. It relates to the specific events or experiences of the user. This involves the logs of previous
+      conversations or a vector database of the embeddings of past scenarios. This is used for keeping track of the
+      context of those past events. This allows for the agent to be able to use context from past sessions to
+      contextualize the current task. Episodic memory retrieval is
+      commonly done using a vector database in a similar way to how a RAG system works. Episodic memory would be used
+      when a user is working on a new math problem because the agent would be able to reference past conversations
+      solving math problems and would follow the same flow that the previous interactions had.
+    * Semantic memory is a type of long-term memory that stores stable, general facts and knowledge independent of any
+      specific event. It is where specifics about the user or scenario are stored across sessions. For example, a model
+      would default to explain how to use an app in the Linux OS if in a previous conversation the user stated that they
+      work primarily in the Linux OS. Semantic memory is how responses from the agent can stay fine-tuned to the user.
+      It is usually implemented using a persistent key-value store or user profile database.
+* Explain why memory compaction is valuable.
+    * Memory compaction is the process by which the active information of a conversation is compressed to a smaller,
+      more manageable amount, to improve the effectiveness of the agent. It is usually triggered when the model
+      approaches a soft threshold of its capacity, like 70-80% or after key milestones like when a task is completed.
+      Memory compaction serves three purposes. It is used to save information into long-term memory. By compacting
+      memory, it gets added to episodic and semantic memory to be used later. This allows facts to permeate
+      conversations without being needed to be saved to the working memory every time they are brought up. The second
+      advantage of memory compaction is that it keeps the context of the conversation robust so the model doesn't get
+      affected by context drift. This is important because all models have a context limit where they can only hold a
+      certain number of tokens in their context at a time. This way the model can keep track of the most important
+      pieces of information and compress the "noise" that contains low-signal content or redundant context. Another
+      advantage is that it helps to highlight information that could be "lost in the middle" of a long set of context.
+      By compacting the memory this could be kept relevant. The downside of memory compaction is similar to the downside
+      of image compression, although it offers advantageous benefits, it also comes with the cost of losing information.
+      This loss of information could also lead to the problem that it is trying to solve with compacting to preserve "
+      lost in the middle" information if the model does not see it as important during the compaction process. Memory
+      compaction would involve saving completed tasks to long-term memory and then replacing the building process with a
+      simple summary and also removing etiquette words like please and thank you and instead storing the politeness of
+      the user and expected politeness of the model in long-term memory.
+
+### Section 3g: Evaluation and Security
+
+* What do we mean by "LLM as judge"? Describe when you'd use it.
+    * LLM-as-judge is a system where an agent's response is graded by an LLM typically by returning a structured output
+      containing a score and reasoning for the score. This is similar to agent-as-judge which is a system where outputs
+      generated by an agent are then graded by a different agent that has access to tools, reasoning steps, and has the
+      ability to verify outputs at each stage of the workflow. This paradigm is used when attempting to improve the
+      quality of responses in a subjective way. One way these systems can be used is in determining if a response would
+      answer the user's question. If a user asks for a list of Mexican restaurants and then an agent provides a list,
+      the judge agent can then verify those listings to see if they should qualify as valid Mexican restaurants. Another
+      use case for an LLM-as-judge system is evaluating tone, safety, or style. In an agent-as-judge
+      system, it can verify responses against source documents using a RAG system. Another use case is that these judge
+      systems can be the first step in limiting human-in-the-loop systems. For example, if a user asks an agent to
+      write a database query, the judge agent can read through the generated code and validate it against major security
+      flaws. This would allow the user to only need to validate queries that have a bigger danger window. One more use
+      case is for scalable automated testing. Instead of extensive human annotators during model evaluation, an
+      LLM-as-judge system can provide preliminary scoring of the model to pipeline regression testing.
+* Name 2 or 3 considerations to be careful of or mitigate when using LLM as judge.
+    * One downside of the agents-as-judge approach is that it takes much longer for the user to get back a response,
+      because there is a back and forth between the generative agent and the judging agent. The way to mitigate this
+      problem is to cache results for reoccurring output patterns or running the judge asynchronously. Another downside
+      of agent-as-judge is the systematic bias of the judge itself. The judge could be biased by elements that are only
+      tangentially connected to the quality of the response. These features include the output length, which output
+      came first, and favoring a response that matches the judge's style. To mitigate this problem, is to use a
+      calibrated judge or to use multiple judges that have different requirements and then average the scores. A third
+      consideration that should be made is on the goal of the evaluation. When something is evaluated it either is
+      evaluated subjectively or objectively. They are also evaluated against solutions that have grounded truth
+      per-example or no grounded truth per-example. When attempting to evaluate a model against a use case where there
+      is a per-example grounded truth, it might be more effective to use a deterministic system instead of an
+      LLM-as-judge. When evaluating subjective responses it is important that the goals are clearly outlined especially
+      in cases where there is no per-example grounded truth. For example, evaluating if a logic problem solution is
+      correct has a per-example grounded truth and should use a deterministic checker. On the other hand,
+      evaluating the empathic response of a customer service agent has no grounded truth, so it lends itself better to
+      an LLM-as-judge approach. To mitigate goal misalignment, it is important to establish a rubric with explicit
+      criteria before deploying the judge.
+* Briefly describe how you might turn an evaluation metric into a guardrail.
+    * The purpose of an evaluation metric is for the grading of the response of a model. A guardrail is instead for the
+      enforcement of some standard at runtime by blocking or regenerating an output on failure to comply. Guardrails can
+      be applied as sanitization or filtering of the incoming message from the user or on limiting the response from the
+      agent. One application of an evaluation metric being used as a guardrail could be in the setting of a pass/fail
+      threshold. This threshold could then be used to enforce the guardrail on the conversation or agent use. an example
+      of this would be a toxicity rating of an LLM's response to a user. This can be evaluated using an LLM-as-judge,
+      and it will give a score back that if it meats a threshold like 0.7 or higher it forces a regeneration. This
+      regeneration request would also include specifics about why it failed in an attempt to get a valid new output. A
+      similar, but different approach would be to implement a deterministic check on the output to be able to grade the
+      response and force it to be regenerated if it does not meet the criteria. A use case based on this system would be
+      building a deterministic evaluation system that checks the LLMs output for words or phrases that it should never
+      use and then force a regeneration or ask the user for clarification. For example if building a tutor bot, if it is
+      never supposed to give the user code it could run a check on the output for coding syntax and then if it sees
+      coding syntax it could flag the system and force regeneration. In both examples a retry limit could be applied to
+      reduce the likelihood of the generation and judge system getting caught in a loop with each other.
+* Name 2-3 prompt injection attacks
+    * Prompt injection attacks are where a user is able to give an agent context that would get it to act in a way that
+      is against its intended design.
+    * A direct prompt injection attack follows the same structure as a SQL injection attack with the intent on
+      overriding access or action. In a SQL injection attack you can force the database to drop tables by formatting
+      your input in a way that gets it to run the malicious command. In a similar way, using an LLM you can inject the
+      model to ignore its previous instruction and then redirect it onto a different path. This is usually done to
+      override the input guardrails. The attack attempts to override the main agent's system prompt instruction by
+      injecting conflicting commands in the user input. One potential mitigation can be partially achieved by using
+      instruction hierarchy enforcement. This involves giving clear restrictions in the system prompt that force the LLM
+      to override potentially malicious requests from the user. The downside of this approach is that it is still based
+      on the effectiveness of the system prompt which is only a probabilistic mitigation.
+    * Another type of prompt injection attack is an indirect approach where it isn't the user giving the agent the
+      injection prompt, but instead it comes from another source. This can occur when an agent has access to websearch
+      and then scrapes those pages for information. This can lead to injection prompts being read into the context.
+      Indirect prompt injection attacks can be mitigated by separating trusted and untrusted context. This would work by
+      keeping system context at highest security, user input at potentially dangerous, and data read in from external
+      sources as high risk. This would limit the effect of dangerous injections from untrusted sources.
+    * Another kind of injection is multimodal injection. This involves embedding malicious instructions in images,
+      audio, or PDFs that the agent processes. These injections can be hazardous because possibly the user doesn't
+      recognize the malicious instructions in the files, but they will be passed to the model. An example of this is
+      white fronting. This is the process of hiding instructions usually in PDFs in text written in a white font color.
+      These could be any malicious instructions, similar to a direct injection attack. To mitigate this risk, it
+      is important to sanitize all modes of information passed into the model. This can be done in multiple ways: a
+      modal sandbox where each mode of information is processed in an isolated context; applying the same content
+      policies on the extracted text that text input has to run through; and treating all derived content as untrusted
+      by default.
+
+### Section 4a: Images
+
+* Why might you use a two-step image generation workflow where a model first generates an output and then reflects on it
+  before producing a second image?
+    * This type of system has two main types of implementations. The first is an iteration based approach where the
+      first image that is generated is a rough outline of the final image. This is similar to a difusion model; however,
+      the difference is that with a two or multistep image generation workflow that happens in phases, it is a secondary
+      model that provides feedback and descriptions on how to improve in the next phase. Iteration is an important part
+      of agentic development and by applying that principle to image generation, the ability to generate a higher
+      quality final product is higher. This works because the model is reflecting on the parts that are generated first
+      so it is able to refine its performance. A specific advantage of two-step image generation is that it allows for
+      images to be produced in phases. This mimics the traditional creation of images where first forms are established,
+      then surrounding features, and finally refinement of the shapes and colors. This advantage works because the model
+      is also generating in parts the agent will be able to focus on clean up and details on the second pass. The other
+      type of two-image generation would involve the initial generation of an image and then the holistically critiquing
+      of the image by a separate agent to result in an improved final image being generated. This process works
+      similarly to LLM-as-judge where the reflection step generates structured feedback for the generation model. This
+      workflow allows for prompt alignment checking. By getting a complete image, the model can then grade it and
+      establish criteria for the second image generation. Another advantage of this method is that it makes it possible
+      for guardrails to be applied as a part of the refinement process before the final image is generated to redirect
+      the process of generating the image to be within the restrictions. By critiquing an image the model can also
+      establish visual consistency in the generated image that would have been missed in the initial generation of the
+      image.
+* What are two ways to pass image data to a model for analysis?
+    * The two methods of passing an image to a model for analysis are by providing the model with a URL that points to
+      the image or by sending the image directly using Base64 encoding. The URL approach keeps the
+      payload lightweight while the Base64 approach embeds the entire raw image. Both methods require the image to be of
+      a format that the model can handle (usually PNG, JPEG, GIF, and WebP).
+    * URL: The first method is to provide the model with a url that points directly to the image. This is done by using
+      a specific part of the model's API to send it the image. For example, it could follow the format:
+      `{"type": "image_url", "image_url": {"url": "https://..."}}` An advantage of the URL approach is that enables the
+      cahching of the image's URL to save on context. A weakness of this method is that the model must be
+      able to access the URL at inference time. This means that images that are hosted privately or locally will fail.
+    * Base64 encoding: The other method is by sending the image as a Base64-encoded string. This allows the user to send
+      the image to the model directly from a local file or a dynamically generated image. The weakness of this method is
+      that it greatly increases the size of the payload. This will increase latency and can result in failure to use the
+      API, because it will hit the request size limit for large images. Another disadvantage is that the image will fill
+      up the context of the conversation because the model will have to hold onto it. This will result in an increased
+      token cost and usage.
+
+### Section 4b: Audio
+
+* Compare and contrast the realtime speech-to-speech architecture vs the speech-to-text to text-to-speech architecture.
+    * Realtime speech-to-speech architecture is a system that allows a user to send audio to the model and to then have
+      it interpret it and provide an audio response. The speech-to-text to text-to-speech architecture is a system where
+      the user's audio input is first transformed into text and then passed to the model. The model then returns a text
+      response which is then converted to speech on the user's side.
+    * Speech-to-speech architecture is able to have a quicker response time because all the analysis of the speech can
+      be handled on the model's end making it possible for the model's side to make optimizations. This advantage gives
+      speech-to-speech an approximate 85% speed up improvement. Another advantage of speech-to-speech is that it is able
+      to handle the tone and intonation of the user's input better because the model has access to that information. A
+      third advantage is that a speech-to-speech system is able to handle barge-in requests and stop generating mid
+      sentence to replicate the real flow of conversation. One drawback of the system is that it is not customizable
+      because all the components are done on the model's side. Another drawback is that this architecture does not allow
+      for the ability to debug the text because it is handled on the model's side. Another disadvantage is that this
+      system costs more than speech-to-text to text-to-speech because the model has to host all the tools for processing
+      the input and it charges for that process.
+    * The speech-to-text to text-to-speech architecture is most effective at adding additional context to the user
+      inputs before passing them on to the model. The main disadvantage of this architecture is it slows the process
+      because there is a hand-off between the speech-to-text system to the llm and then a hand-off from the llm to the
+      text-to-speech system. Another disadvantage of this method is that it easily
+      propagates transcription errors. If the transcription of the user's audio is bad it is compounded when it is
+      passed to the model as pure text.

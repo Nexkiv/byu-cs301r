@@ -34,4 +34,8 @@ that is. I do not cold generate artwork.
 ## Part 2: Getting the Project Demo ready.
 
 I started by cleaning up the flash-card generation. So far it has been not entirely effective at performing in the
-envisioned way. It misses terms and uses a count interface that is non-intuitive.
+envisioned way. It misses terms and uses a count interface that is non-intuitive. The new revision speeds up the
+flashcard generation and makes it so the cards generated are more accurate. I used an LLM-as-Judge system to improve
+quality rather than relying on prompt engineering.
+
+I practiced for my demo, I will focus on Agent Assisted Coding, RAG System, and Agent-as-Judge
